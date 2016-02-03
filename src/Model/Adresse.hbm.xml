@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Model">
+ <class name="Adresse" table="address_table" dynamic-insert="true" >
+ <cache usage="read-write"/>
+  <id name="id" type="long"  column="id_address" >
+   <generator class="increment"/>
+  </id>
+   <property name="city">
+  <column name="city"/></property>
+  <property name="street">
+  <column name="street"/></property>
+  <property name="country">
+  <column name="country"/></property>
+  <property name="zip">
+  <column name="zip"/></property></class>
+  </hibernate-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Model">
+
+  <class name="Contact" table="Contact_Table"  discriminator-value="c"  lazy="false">
+   <cache usage="read-write"/>
+ 		
+  	 <id name="id" type="long" column="id_contact" >
+   		<generator class="increment"/>
+  	 </id>
+  	 	<discriminator column="sousclasse" type="character"/>
+  	 	<version name="verssion" column="verssion"></version>
+  		
+  	 
+  	 
+  	
+  	 <many-to-one name="address" column="id_address"  cascade="all" not-null="false" optimistic-lock="false" lazy="false"  />
+  	 
+  	 <property name="nom">
+  	<column name="lastname"/>
+  	</property> 
+  	 	
+  	 <property name="prenom">
+  	 <column name="firstname"/>
+  	 </property>
+  	   	   	  	 
+	 <property name="mail">
+	 <column name="email"/>
+	 </property>
+	 	 
+	 <set name="profiles" inverse="true" cascade="save-update,delete-orphan" mutable="true"   lazy="false">
+	 <key column="id_contact" />	
+	 <one-to-many class="PhoneNumber"  not-found="exception" />
+	 </set>
+	 		  
+	 <set name="Books" table="group_contact" cascade="save-update-all" inverse="true"  lazy="false"  >
+	 <key column ="id_contact"/>
+	 <many-to-many class="ContactGroup" column="id_group" not-found="exception"/> 
+	 </set>
+	 
+	 <subclass name="Entreprise" discriminator-value="E" >
+	 <property name="NumSiret" column="numSiret" type="long" ></property>
+	 </subclass>
+	 
+  </class>
+ 
+  </hibernate-mapping>

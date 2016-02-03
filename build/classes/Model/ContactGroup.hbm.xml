@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Model">
+<class name="ContactGroup" table="table_group"  >
+<cache usage="read-write"/>
+<id name="grouId" type="long" column="id_group" >
+<generator class="increment"></generator></id>
+<property name="groupName" column="group_name" update="true"></property>
+<set name="Contacts" table="group_contact" cascade="save-update,delete" >
+<key column="id_group"/>
+<many-to-many class="Contact" column="id_contact"  not-found="exception"/></set>
+</class></hibernate-mapping>

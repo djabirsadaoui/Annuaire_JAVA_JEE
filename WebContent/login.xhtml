@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+	 
+	<h:head>
+		 
+		<f:loadBundle basename="main.resources.com.contactManagement.messages" var="msg"/>
+		<title><h:outputText value="#{msg['loginTitle']}" /></title>
+		<h:outputStylesheet library="default" name="css/form.css" />
+	</h:head>
+
+	<h:body>
+		<h2><h:outputText value="#{msg['def']}" /></h2>
+		
+		<h:form>
+      		<h3><h:outputText value="#{msg['welcome']}" /></h3>
+      
+      		<h:panelGrid columns="2"> 
+         		<h:outputText value="#{msg['language']}" />
+         		<h:selectOneMenu value="#{userData.locale}" onchange="submit()" valueChangeListener="#{userData.localeChanged}">
+            		<f:selectItems value="#{userData.countries}" /> 
+         		</h:selectOneMenu> 
+      		</h:panelGrid> 
+   		</h:form>
+		
+		<h:form>
+  			<fieldset>
+               <legend><h:outputText value="#{msg['signInLegend']}" /></legend>
+          
+                <h:outputLabel for="emailSignIn" value="#{msg['emailAddress']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="emailSignIn" value="#{signinControl.email}" validator="#{signinControl.validateEmail}" validatorMessage="#{msg['invalidEmail']}" required="true" size="20" maxlength="60" requiredMessage="#{msg['requiredEmail']}"/>
+                <h:message id="emailSignInMessage" for="emailSignIn" errorClass="erreur" />
+                <br/>
+
+                <h:outputLabel for="passwordSignIn" value="#{msg['password']}"><span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="passwordSignIn" value="#{signinControl.password}" validator="#{signinControl.validateSignIn}" validatorMessage="#{msg['invalidEmailPassword']}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredPassword']}"/>
+            	<h:message id="passwordSignInMessage" for="passwordSignIn" errorClass="erreur"/>
+            	<br/>
+                      
+                <h:messages globalOnly="true" infoClass="info"/>  
+                <h:commandButton value="#{msg['signIn']}" action="#{signinControl.signIn}" styleClass="sansLabel"/>
+                <br/>
+            </fieldset>
+		</h:form>
+		
+		<br/>
+		<br/>
+		
+		<h:form>
+  			<fieldset>
+                <legend><h:outputText value="#{msg['signUnLegend']}" /></legend>
+                <!-- <p></p> --> 
+
+                 <h:outputLabel for="firstNameSignUp" value="#{msg['firstName']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="firstNameSignUp" value="#{signupControl.firstName}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredFirstName']}"/>
+                <h:message id="firstNameSignUpMessage" for="firstNameSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="lastNameSignUp" value="#{msg['lastName']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="lastNameSignUp" value="#{signupControl.lastName}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredLastName']}"/>
+                <h:message id="lastNameSignUpMessage" for="lastNameSignUp" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="emailSignUp" value="#{msg['emailAddress']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="emailSignUp" value="#{signupControl.email}" validator="#{signupControl.validateEmail}" validatorMessage="#{msg['invalidEmail']}" required="true" size="20" maxlength="60" requiredMessage="#{msg['requiredEmail']}"/>
+                <h:message id="emailSignUpMessage" for="emailSignUp" errorClass="erreur" />
+                <br/>
+                
+                <h:outputLabel for="passwordSignUp" value="#{msg['password']}"><span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="passwordSignUp" value="#{signupControl.password}" required="true" validator="#{signupControl.validatePassword}" validatorMessage="#{msg['invalidPassword']}" size="20" maxlength="20" requiredMessage="#{msg['requiredPassword']}"/>
+            	<h:message id="passwordSignUpMessage" for="passwordSignUp" errorClass="erreur"/>
+            	<br/>
+            	
+            	<h:outputLabel for="confirmationSignUp" value="#{msg['passwordConfirmation']}"><span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="confirmationSignUp" value="#{signupControl.passwordConfirmation}" validator="#{signupControl.validateConfirmation}" validatorMessage="#{msg['passwordMismatch']}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredPassword']}"/>
+            	<h:message id="confirmationSignUpMessage" for="confirmationSignUp" errorClass="erreur"/>
+            	<br/>
+            	
+            	<h:outputLabel for="groupSignUp" value="#{msg['group']}"></h:outputLabel>
+            	<h:selectOneMenu value="#{signupControl.group}" >
+                	<f:selectItem itemLabel="#{msg['family']}" itemValue="family"/>
+                  	<f:selectItem itemLabel="#{msg['friend']}" itemValue="friend"/>
+                  	<f:selectItem itemLabel="#{msg['work']}" itemValue="work"/>
+                </h:selectOneMenu>
+                <br/>
+                
+                <h:outputLabel for="createGroupSignUp" value="#{msg['createGroup']}"></h:outputLabel>
+                <h:inputText id="createGroupSignUp" value="#{signupControl.group}" size="20" maxlength="20"/>
+                <h:message id="createGroupSignUpMessage" for="createGroupSignUp" errorClass="erreur"/>
+                <br/>
+   
+                <h:outputLabel for="streetSignUp" value="#{msg['street']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="streetSignUp" value="#{signupControl.street}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredStreet']}"/>
+                <h:message id="streetSignUpMessage" for="streetSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="citySignUp" value="#{msg['city']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="citySignUp" value="#{signupControl.city}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCity']}"/>
+                <h:message id="citySignUpMessage" for="citySignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="zipSignUp" value="#{msg['zip']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="zipSignUp" value="#{signupControl.zip}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredZip']}"/>
+                <h:message id="zipSignUpMessage" for="zipSignUp" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="countrySignUp" value="#{msg['country']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="countrySignUp" value="#{signupControl.country}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCountry']}"/>
+                <h:message id="countrySignUpMessage" for="countrySignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="mobileSignUp" value="#{msg['mobile']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="mobileSignUp" value="#{signupControl.mobile}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredMobile']}"/>
+                <h:message id="mobileSignUpMessage" for="mobileSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="homeSignUp" value="#{msg['home']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="homeSignUp" value="#{signupControl.home}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredHome']}"/>
+                <h:message id="homeSignUpMessage" for="homeSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="officeSignUp" value="#{msg['office']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="officeSignUp" value="#{signupControl.office}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredOffice']}"/>
+                <h:message id="officeSignUpMessage" for="officeSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:messages globalOnly="true" infoClass="info"/>  
+                <h:commandButton value="#{msg['signUp']}" action="#{signupControl.checkSignUp}" styleClass="sansLabel"/>
+                <br/>
+            </fieldset>
+		</h:form>
+	</h:body>
+	
+</html>

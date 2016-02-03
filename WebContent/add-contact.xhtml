@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+		<h:head>
+		<title><h:outputText value="#{msg['addTitle']}" /></title>
+		<h:outputStylesheet library="default" name="css/form.css" />
+		 <f:loadBundle basename="main.resources.com.contactManagement.messages" var="msg"/>
+	</h:head>
+
+	<h:body>
+
+		
+		<h:form>
+  			<fieldset>
+                <legend><h:outputText value="#{msg['addLegend']}" /></legend>           
+            
+                <h:outputLabel for="firstNameAdd" value="#{msg['firstName']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="firstNameAdd" value="#{addContactControl.firstName}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredFirstName']}"/>
+                <h:message id="firstNameAddMessage" for="firstNameAdd" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="lastNameAdd" value="#{msg['lastName']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="lastNameAdd" value="#{addContactControl.lastName}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredLastName']}"/>
+                <h:message id="lastNameAddMessage" for="lastNameAdd" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="emailAdd" value="#{msg['emailAddress']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="emailAdd" value="#{addContactControl.email}" validator="#{addContactControl.validateEmail}" validatorMessage="#{msg['invalidEmail']}" required="true" size="20" maxlength="60" requiredMessage="#{msg['requiredEmail']}"/>
+                <h:message id="emailAddMessage" for="emailAdd" errorClass="erreur" />
+                <br/>
+               
+            	<h:outputLabel for="groupSignUp" value="#{msg['group']}"></h:outputLabel>
+            	<h:selectOneMenu value="#{addContactControl.group}" >
+                	<f:selectItem itemLabel="#{msg['family']}" itemValue="family"/>
+                  	<f:selectItem itemLabel="#{msg['friend']}" itemValue="friend"/>
+                  	<f:selectItem itemLabel="#{msg['work']}" itemValue="work"/>
+                </h:selectOneMenu>
+                <br/>
+   
+                <h:outputLabel for="streetAdd" value="#{msg['street']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="streetAdd" value="#{addContactControl.street}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredStreet']}"/>
+                <h:message id="streetAddMessage" for="streetAdd" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="cityAdd" value="#{msg['city']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="cityAdd" value="#{addContactControl.city}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCity']}"/>
+                <h:message id="cityAddMessage" for="cityAdd" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="zipAdd" value="#{msg['zip']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="zipAdd" value="#{addContactControl.zip}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredZip']}"/>
+                <h:message id="zipAddMessage" for="zipAdd" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="countryAdd" value="#{msg['country']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="countryAdd" value="#{addContactControl.country}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCountry']}"/>
+                <h:message id="countryAddMessage" for="countryAdd" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="mobileAdd" value="#{msg['phoneNumber']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="mobileAdd" value="#{addContactControl.mobile}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredPhone']}"/>
+                <h:message id="mobileAddMessage" for="mobileAdd" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="kindAdd" value="#{msg['phoneKind']}"></h:outputLabel>
+            	<h:selectOneMenu value="#{addContactControl.kind}" >
+                	<f:selectItem itemLabel="#{msg['mobile']}" itemValue="mobile"/>
+                  	<f:selectItem itemLabel="#{msg['home']}" itemValue="home"/>
+                  	<f:selectItem itemLabel="#{msg['office']}" itemValue="office"/>
+                </h:selectOneMenu>
+                <br/>
+
+         
+                <h:commandButton value="#{msg['add']}" action="#{addContactControl.checkAddContact}" styleClass="sansLabel"/>
+                <br/>
+                <h:commandButton value="#{msg['home']}" action="welcome-page" />
+            </fieldset>
+		</h:form>
+		
+	</h:body>
+	
+</html>

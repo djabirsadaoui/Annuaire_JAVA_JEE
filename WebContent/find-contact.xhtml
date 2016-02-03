@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+		
+     	 <f:loadBundle basename="main.resources.com.contactManagement.messages" var="msg"/>
+<h:head>
+		<title><h:outputText value="#{msg['findTitle']}" /></title>
+		
+		<h:outputStylesheet library="default" name="css/form.css" />
+	</h:head>
+
+	<h:body>
+
+	
+		<h:form>
+  			<fieldset>
+                <legend><h:outputText value="#{msg['findLegend']}" /></legend> 
+                         
+          		<h:outputLabel for="findContact" value="#{msg['by']}"><span class="requis">*</span></h:outputLabel>
+            	<h:selectOneMenu value="#{findContactControl.criteria}" >
+                	<f:selectItem itemLabel="#{msg['emailAddress']}" itemValue="email"/>
+                  	<f:selectItem itemLabel="#{msg['group']}" itemValue="group"/>
+                  	<f:selectItem itemLabel="#{msg['lastName']}" itemValue="lastName"/>
+                  	<f:selectItem itemLabel="#{msg['phoneNumber']}" itemValue="phoneNumber"/>
+                </h:selectOneMenu>
+                
+                <h:inputText id="contactSearch" value="#{findContactControl.valeur}" required="true" size="20" maxlength="60" requiredMessage="#{msg['criteriaRequired']}"/>
+                <h:message id="contactSearchMessage" for="contactSearch" errorClass="erreur" />
+                <br/>
+                      
+                <h:messages globalOnly="true" infoClass="info"/>  
+                <h:commandButton value="#{msg['search']}" action="#{findContactControl.search}" styleClass="sansLabel"/>
+                <br/>
+                <h:commandButton value="#{msg['home']}" action="welcome-page" />
+            </fieldset>
+		</h:form>
+	</h:body>
+	
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"> 
+	
+	<h:head>
+    	<title><h:outputText value="#{msg['editTitle']}" /></title>
+		<h:outputStylesheet library="default" name="css/form.css" />
+		<f:loadBundle basename="main.resources.com.contactManagement.messages" var="msg"/>
+    </h:head>
+    
+    <h:body>  
+
+    
+	<h:form>
+		<fieldset>
+		
+			<h:outputLabel for="firstname">First Name<span class="requis">*</span></h:outputLabel>             
+			<h:inputText id="firstName" value="#{findContactControl.contact.prenom}" 
+			    required="true" size="20" maxlength="20" requiredMessage="First Name Required"/>
+                <h:message id="firstNameAddMessage" for="firstNameAdd" errorClass="erreur"/><br/>		
+                				
+			<h:outputLabel for="lastname">Last Name<span class="requis">*</span></h:outputLabel>
+			<h:inputText id="lastName" value="#{findContactControl.contact.nom}" required="true" size="20" maxlength="20" requiredMessage="Last Name Required"/>
+            <h:message id="lastNameAddMessage" for="lastNameAdd" errorClass="erreur"/><br/>
+            
+			<h:outputLabel for="emailAdd">Email Address<span class="requis">*</span></h:outputLabel>
+			<h:inputText id="Mail" value="#{findContactControl.contact.mail}" validator="#{addContactControl.validateEmail}" validatorMessage="Invalid Email" 
+			required="true" size="20" maxlength="60" requiredMessage="Email Address Required" /><br/>	
+								
+			<h:outputLabel for="streetAdd">Street<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="streetAdd" value="#{findContactControl.contact.address.street}" required="true" size="20" maxlength="20" requiredMessage="Street Required"/>
+                <h:message id="streetAddMessage" for="streetAdd" errorClass="erreur"/>
+                <br/>
+            <h:outputLabel for="cityAdd">City<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="cityAdd" value="#{findContactControl.contact.address.city}" required="true" size="20" maxlength="20" requiredMessage="City Required"/>
+                <h:message id="cityAddMessage" for="cityAdd" errorClass="erreur"/>
+                <br/>
+                
+            <h:outputLabel for="zipAdd">Zip<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="zipAdd" value="#{findContactControl.contact.address.zip}" required="true" size="20" maxlength="20" requiredMessage="Zip Required"/>
+                <h:message id="zipAddMessage" for="zipAdd" errorClass="erreur"/>
+                <br/>                
+            <h:outputLabel for="countryAdd">Country<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="countryAdd" value="#{findContactControl.contact.address.country}" required="true" size="20" maxlength="20" requiredMessage="Country Required"/>
+                <h:message id="countryAddMessage" for="countryAdd" errorClass="erreur"/>
+                <br/>               
+			<h:commandButton value="#{msg['update']}" action="#{findContactControl.updateContact}" /><br/>
+		</fieldset>
+		<h:commandButton value="#{msg['home']}" action="welcome-page" />
+	</h:form>  			
+    </h:body>
+    
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+		<title>Welcome to iContact - Login or Sign Up</title>
+		<h:outputStylesheet library="default" name="css/form.css" />
+	</h:head>
+
+	<h:body>
+		<h2>With iContact, your business made easier!</h2> 
+		<br/>
+		<h2>Bad Sign Up!</h2>
+		
+		<h:form>
+  			<fieldset>
+                <legend>Login to iContact</legend>
+               
+                <h:outputLabel for="loginSignIn">Login<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="loginSignIn" value="#{signinControl.login}" required="true" size="20" maxlength="20" requiredMessage="Login Required"/>
+                <h:message id="loginSignInMessage" for="loginSignIn" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="passwordSignIn">Password<span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="passwordSignIn" value="#{signinControl.password}" required="true" size="20" maxlength="20" requiredMessage="Password Required"/>
+            	<h:message id="passwordSignInMessage" for="passwordSignIn" errorClass="erreur"/>
+            	<br/>
+                   
+                <h:messages globalOnly="true" infoClass="info"/>  
+                <h:commandButton value="Sign In" action="#{signinControl.checkAccess}" styleClass="sansLabel"/>
+                <br/>
+            </fieldset>
+		</h:form>
+		
+		<br/>
+		<br/>
+		
+		<h:form>
+  			<fieldset>
+                <legend>New to iContact? Sign Up</legend>
+                <!-- <p></p> --> 
+
+                <h:outputLabel for="firstNameSignUp">First Name<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="firstNameSignUp" value="#{signupControl.firstName}" required="true" size="20" maxlength="20" requiredMessage="First Name Required"/>
+                <h:message id="firstNameSignUpMessage" for="firstNameSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="lastNameSignUp">Last Name<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="lastNameSignUp" value="#{signupControl.lastName}" required="true" size="20" maxlength="20" requiredMessage="Last Name Required"/>
+                <h:message id="lastNameSignUpMessage" for="lastNameSignUp" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="emailSignUp">Email Address<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="emailSignUp" value="#{signupControl.email}" required="true" size="20" maxlength="60" requiredMessage="Email Address Required"/>
+                <h:message id="emailSignUpMessage" for="emailSignUp" errorClass="erreur" />
+                <br/>
+                
+                <h:outputLabel for="passwordSignUp">Password<span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="passwordSignUp" value="#{signupControl.password}" required="true" size="20" maxlength="20" requiredMessage="Password Required"/>
+            	<h:message id="passwordSignUpMessage" for="passwordSignUp" errorClass="erreur"/>
+            	<br/>
+            	
+            	<h:outputLabel for="confirmationSignUp">Password Confirmation<span class="requis">*</span></h:outputLabel>
+            	<h:inputSecret id="confirmationSignUp" value="#{signupControl.passwordConfirmation}" required="true" size="20" maxlength="20" requiredMessage="Password Required"/>
+            	<h:message id="confirmationSignUpMessage" for="confirmationSignUp" errorClass="erreur"/>
+            	<br/>
+   
+                <h:outputLabel for="streetSignUp">Street<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="streetSignUp" value="#{signupControl.street}" required="true" size="20" maxlength="20" requiredMessage="Street Required"/>
+                <h:message id="streetSignUpMessage" for="streetSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="citySignUp">City<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="citySignUp" value="#{signupControl.city}" required="true" size="20" maxlength="20" requiredMessage="City Required"/>
+                <h:message id="citySignUpMessage" for="citySignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="zipSignUp">Zip<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="zipSignUp" value="#{signupControl.zip}" required="true" size="20" maxlength="20" requiredMessage="Zip Required"/>
+                <h:message id="zipSignUpMessage" for="zipSignUp" errorClass="erreur"/>
+                <br/>
+
+                <h:outputLabel for="countrySignUp">Country<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="countrySignUp" value="#{signupControl.country}" required="true" size="20" maxlength="20" requiredMessage="Country Required"/>
+                <h:message id="countrySignUpMessage" for="countrySignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="mobileSignUp">Mobile<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="mobileSignUp" value="#{signupControl.mobile}" required="true" size="20" maxlength="20" requiredMessage="Mobile Required"/>
+                <h:message id="mobileSignUpMessage" for="mobileSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="homeSignUp">Home<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="homeSignUp" value="#{signupControl.home}" required="true" size="20" maxlength="20" requiredMessage="Home Required"/>
+                <h:message id="homeSignUpMessage" for="homeSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="officeSignUp">Office<span class="requis">*</span></h:outputLabel>
+                <h:inputText id="officeSignUp" value="#{signupControl.office}" required="true" size="20" maxlength="20" requiredMessage="Office Required"/>
+                <h:message id="officeSignUpMessage" for="officeSignUp" errorClass="erreur"/>
+                <br/>
+                
+                <h:outputLabel for="passwordSignIna">Password Mismatch<span class="requis"></span></h:outputLabel>   
+                <h:message id="passwordSignInMessagea" for="passwordSignIna" errorClass="erreur"/>
+                <br/>
+                
+                <h:messages globalOnly="true" infoClass="info"/>  
+                <br/>
+                <h:commandButton value="Sign In" action="#{signinControl.checkAccess}" styleClass="sansLabel"/>
+                <br/>
+            </fieldset>
+		</h:form>
+		
+	</h:body>
+</html>

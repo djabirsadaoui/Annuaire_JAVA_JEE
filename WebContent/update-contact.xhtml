@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"> 
+	
+	<h:head>
+    	<title><h:outputText value="#{msg['editTitle']}" /></title>
+		<h:outputStylesheet library="default" name="css/form.css" />
+		<f:loadBundle basename="main.resources.com.contactManagement.messages" var="msg"/>
+    </h:head>
+    
+    <h:body>
+    	
+
+    		
+
+	<h:form>
+		<fieldset>
+		
+			<h:outputLabel for="firstname" value="#{msg['firstName']}"><span class="requis">*</span></h:outputLabel>             
+			<h:inputText id="firstName" value="#{editContactControl.contact.prenom}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredFirstName']}"/>
+            <h:message id="firstNameAddMessage" for="firstNameAdd" errorClass="erreur"/><br/>		
+                				
+			<h:outputLabel for="lastname" value="#{msg['lastName']}"><span class="requis">*</span></h:outputLabel>
+			<h:inputText id="lastName" value="#{editContactControl.contact.nom}"  required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredLastName']}"/>
+            <h:message id="lastNameAddMessage" for="lastNameAdd" errorClass="erreur"/><br/>
+            
+			<h:outputLabel for="emailAdd" value="#{msg['emailAddress']}"><span class="requis">*</span></h:outputLabel>
+			<h:inputText id="Mail" value="#{editContactControl.contact.mail}"  validator="#{addContactControl.validateEmail}" validatorMessage="#{msg['invalidEmail']}" required="true" size="20" maxlength="60" requiredMessage="#{msg['requiredEmail']}"/>
+            <h:message id="emailAddMessage" for="emailAdd" errorClass="erreur" /><br/>	
+								
+			<h:outputLabel for="streetAdd" value="#{msg['street']}"><span class="requis">*</span></h:outputLabel>
+            <h:inputText id="streetAdd" value="#{editContactControl.contact.address.street}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredStreet']}"/>
+            <h:message id="streetAddMessage" for="streetAdd" errorClass="erreur"/> <br/>
+            
+            <h:outputLabel for="cityAdd" value="#{msg['city']}"><span class="requis">*</span></h:outputLabel>
+            <h:inputText id="cityAdd" value="#{editContactControl.contact.address.city}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCity']}"/>
+            <h:message id="cityAddMessage" for="cityAdd" errorClass="erreur"/><br/>
+                
+            <h:outputLabel for="zipAdd" value="#{msg['zip']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="zipAdd" value="#{editContactControl.contact.address.zip}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredZip']}"/>
+                <h:message id="zipAddMessage" for="zipAdd" errorClass="erreur"/>
+                <br/>                
+            <h:outputLabel for="countryAdd" value="#{msg['country']}"><span class="requis">*</span></h:outputLabel>
+                <h:inputText id="countryAdd" value="#{editContactControl.contact.address.country}" required="true" size="20" maxlength="20" requiredMessage="#{msg['requiredCountry']}"/>
+                <h:message id="countryAddMessage" for="countryAdd" errorClass="erreur"/>
+                <br/>    
+            
+			<h:commandButton value="#{msg['update']}" action="#{editContactControl.updateContact}" /><br/>
+			<h:commandButton value="#{msg['home']}" action="welcome-page" />
+		</fieldset>
+	</h:form>  			
+    </h:body>
+   
+</html>

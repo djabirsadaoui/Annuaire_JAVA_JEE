@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Model">
+
+  <class name="PhoneNumber" table="Phone_table" mutable="true">
+  <cache usage="read-write"/>
+  <id name="id" column="id_phone" type="long">
+  <generator class="increment"></generator></id>
+  <property name="phoneKind" >
+  <column name="phoneKind"/></property>  
+  <property name="phoneNumber" >
+  <column name="phoneNumber"/></property>
+  
+  <many-to-one name="contact" column="id_contact"   class="Contact"  unique="true"  not-found="exception" ></many-to-one>
+  </class>
+  </hibernate-mapping>
+  
